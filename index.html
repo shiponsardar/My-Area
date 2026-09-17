@@ -1,0 +1,2392 @@
+<!DOCTYPE html>
+<html lang="bn" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#0d9488" />
+<meta name="description" content="আমাদের এলাকা — স্থানীয় কমিউনিটির জন্য আধুনিক অ্যাপ" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<title>আমাদের এলাকা</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json" />
+
+<style>
+/* ============================================================
+   DESIGN SYSTEM
+   ============================================================ */
+:root {
+  --primary-50:  #eefbf7;
+  --primary-100: #d3f4ec;
+  --primary-200: #a7e9da;
+  --primary-300: #74d8c4;
+  --primary-400: #43bfa8;
+  --primary-500: #1fa38b;
+  --primary-600: #0d9488;
+  --primary-700: #0f766e;
+  --primary-800: #115e59;
+  --primary-900: #134e4a;
+
+  --accent-50:  #fff8eb;
+  --accent-100: #ffeec7;
+  --accent-200: #ffd88a;
+  --accent-300: #ffbe4d;
+  --accent-400: #ffa726;
+  --accent-500: #f59e0b;
+  --accent-600: #d97706;
+
+  --danger-50:  #fef2f3;
+  --danger-100: #fde0e3;
+  --danger-500: #e11d48;
+  --danger-600: #be123c;
+
+  --success-50:  #ecfdf5;
+  --success-500: #10b981;
+  --success-600: #059669;
+
+  --warn-50:  #fffbeb;
+  --warn-500: #f59e0b;
+
+  --gray-0:   #ffffff;
+  --gray-25:  #fcfcfd;
+  --gray-50:  #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-150: #e9eef4;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+
+  --bg:        #f4f7f8;
+  --surface:   #ffffff;
+  --surface-2: #fbfcfd;
+  --border:    #e6ecf1;
+
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 20px;
+  --r-xl: 26px;
+  --r-2xl: 32px;
+  --r-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 14px 34px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.05);
+  --shadow-xl: 0 24px 50px rgba(15, 23, 42, 0.14);
+  --shadow-nav: 0 -6px 24px rgba(15, 23, 42, 0.10);
+  --shadow-float: 0 12px 30px rgba(13, 148, 136, 0.28);
+
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-7: 28px; --sp-8: 32px;
+
+  --font-bn: 'Hind Siliguri', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif;
+  --fs-xs: 11.5px;
+  --fs-sm: 13px;
+  --fs-base: 14.5px;
+  --fs-md: 15.5px;
+  --fs-lg: 17px;
+  --fs-xl: 19px;
+  --fs-2xl: 22px;
+  --fs-3xl: 27px;
+
+  --app-max: 480px;
+  --nav-height: 68px;
+  --top-height: 56px;
+
+  --z-header: 50;
+  --z-catbar: 40;
+  --z-nav: 60;
+  --z-sheet: 100;
+  --z-modal: 110;
+  --z-toast: 200;
+  --z-splash: 300;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior-y: none;
+}
+
+body {
+  font-family: var(--font-bn);
+  font-size: var(--fs-base);
+  line-height: 1.55;
+  color: var(--gray-800);
+  background: var(--bg);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video, svg { display: block; max-width: 100%; height: auto; }
+
+button {
+  font-family: inherit; font-size: inherit;
+  border: none; background: none; cursor: pointer; color: inherit;
+}
+
+input, textarea, select { font-family: inherit; font-size: inherit; color: inherit; }
+
+a { color: var(--primary-700); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+ul, ol { list-style: none; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+
+:focus-visible {
+  outline: 3px solid var(--primary-300);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+#app {
+  max-width: var(--app-max);
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  background: var(--bg);
+  isolation: isolate;
+}
+
+.screen { display: none; animation: fadeIn 0.22s ease; }
+.screen.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+@keyframes popIn {
+  0% { transform: scale(0.85); opacity: 0; }
+  60% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* ============================================================
+   SPLASH
+   ============================================================ */
+#splash {
+  position: fixed; inset: 0; z-index: var(--z-splash);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, var(--primary-600) 0%, var(--primary-800) 100%);
+  color: #fff; gap: 22px;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+#splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.splash-logo {
+  width: 92px; height: 92px; border-radius: 26px;
+  background: rgba(255,255,255,0.16);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 44px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+  animation: popIn 0.6s ease;
+}
+.splash-title { font-size: 24px; font-weight: 700; }
+.splash-sub { font-size: var(--fs-sm); opacity: 0.85; margin-top: -14px; }
+.splash-loader {
+  width: 34px; height: 34px;
+  border: 3px solid rgba(255,255,255,0.25);
+  border-top-color: #fff; border-radius: 50%;
+  animation: spin 0.9s linear infinite; margin-top: 8px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.app-header {
+  position: sticky; top: 0; z-index: var(--z-header);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 16px;
+  display: flex; align-items: center; gap: 10px;
+  min-height: var(--top-height);
+}
+
+.app-header .logo {
+  width: 38px; height: 38px; border-radius: 12px;
+  background: linear-gradient(140deg, var(--primary-500), var(--primary-700));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(13,148,136,0.3);
+}
+
+.header-title-wrap { flex: 1; min-width: 0; }
+.header-title {
+  font-size: var(--fs-md); font-weight: 700; color: var(--gray-900);
+  line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.header-sub { font-size: var(--fs-xs); color: var(--gray-500); line-height: 1.15; }
+
+.header-actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+.icon-btn {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray-700); background: transparent;
+  transition: background 0.15s ease, transform 0.1s ease;
+  position: relative;
+}
+.icon-btn:active { transform: scale(0.92); }
+.icon-btn:hover { background: var(--gray-100); }
+.icon-btn.primary { background: var(--primary-50); color: var(--primary-700); }
+.icon-btn svg { width: 22px; height: 22px; stroke-width: 2; }
+
+.badge-dot {
+  position: absolute; top: 7px; right: 7px;
+  min-width: 16px; height: 16px; padding: 0 4px;
+  background: var(--danger-500); color: #fff;
+  font-size: 10px; font-weight: 700;
+  border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+}
+
+/* ============================================================
+   CATEGORY BAR
+   ============================================================ */
+.catbar-wrap {
+  position: sticky; top: var(--top-height); z-index: var(--z-catbar);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  padding: 8px 0 10px; border-bottom: 1px solid var(--border);
+}
+.catbar {
+  display: flex; gap: 8px; overflow-x: auto;
+  padding: 2px 16px; scroll-behavior: smooth;
+}
+.cat-chip {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; background: var(--gray-0);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm); font-weight: 500;
+  color: var(--gray-700); white-space: nowrap;
+  transition: all 0.16s ease; min-height: 36px;
+}
+.cat-chip .emoji { font-size: 15px; line-height: 1; }
+.cat-chip:active { transform: scale(0.96); }
+.cat-chip.active {
+  background: var(--primary-600); color: #fff; border-color: var(--primary-600);
+  box-shadow: 0 4px 12px rgba(13,148,136,0.28);
+}
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+.main-content { padding: 14px 14px calc(var(--nav-height) + 44px); }
+
+.section-title {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 18px 4px 10px;
+}
+.section-title h2 {
+  font-size: var(--fs-md); font-weight: 700; color: var(--gray-900);
+  display: flex; align-items: center; gap: 6px;
+}
+.section-title .link { font-size: var(--fs-sm); color: var(--primary-700); font-weight: 500; }
+
+/* ============================================================
+   POST CARD
+   ============================================================ */
+.post-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 14px; margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.16s ease, transform 0.1s ease;
+  overflow: hidden;
+}
+.post-card:active { transform: scale(0.995); }
+.post-card:hover { box-shadow: var(--shadow-md); }
+.post-card.featured {
+  border: 1.5px solid var(--accent-300);
+  background: linear-gradient(180deg, #fffdf6 0%, #ffffff 60%);
+}
+.post-card.urgent { border-left: 4px solid var(--danger-500); }
+
+.post-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+}
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(140deg, var(--primary-200), var(--primary-400));
+  color: var(--primary-800);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: var(--fs-md);
+  flex-shrink: 0; overflow: hidden; position: relative;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar.sm { width: 32px; height: 32px; font-size: var(--fs-sm); }
+.avatar.lg { width: 76px; height: 76px; font-size: 30px; }
+.avatar.xl { width: 100px; height: 100px; font-size: 40px; }
+
+.post-author { flex: 1; min-width: 0; }
+.post-author .name {
+  font-weight: 600; font-size: var(--fs-sm); color: var(--gray-900);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.post-meta {
+  font-size: var(--fs-xs); color: var(--gray-500);
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.post-meta .dot {
+  width: 3px; height: 3px; background: var(--gray-400);
+  border-radius: 50%; display: inline-block;
+}
+
+.cat-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px; background: var(--primary-50); color: var(--primary-800);
+  border-radius: var(--r-pill); font-size: var(--fs-xs); font-weight: 600;
+}
+.cat-tag.urgent { background: var(--danger-50); color: var(--danger-600); }
+.cat-tag.featured { background: var(--accent-50); color: var(--accent-600); }
+
+.post-menu-btn {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray-500); flex-shrink: 0;
+}
+.post-menu-btn:hover { background: var(--gray-100); }
+
+.post-body { margin-bottom: 10px; }
+.post-title {
+  font-size: var(--fs-md); font-weight: 700; color: var(--gray-900);
+  margin-bottom: 4px; line-height: 1.35;
+}
+.post-desc {
+  font-size: var(--fs-base); color: var(--gray-700); line-height: 1.55;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden; word-break: break-word;
+}
+.post-image {
+  margin: 10px -14px; width: calc(100% + 28px);
+  border-radius: 0; overflow: hidden; background: var(--gray-100);
+}
+.post-image img { width: 100%; height: auto; max-height: 480px; object-fit: cover; }
+.post-images-grid {
+  margin: 10px -14px; width: calc(100% + 28px);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+}
+.post-images-grid img { width: 100%; height: 160px; object-fit: cover; }
+.post-images-grid.single { grid-template-columns: 1fr; }
+.post-images-grid.single img { height: auto; max-height: 460px; }
+
+.post-location {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: var(--fs-xs); color: var(--gray-600);
+  background: var(--gray-100); padding: 4px 10px;
+  border-radius: var(--r-pill); margin-top: 6px;
+}
+.post-location svg { width: 13px; height: 13px; }
+
+.post-stats {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 0; font-size: var(--fs-xs); color: var(--gray-600);
+  border-bottom: 1px solid var(--border); margin-bottom: 6px;
+}
+.post-stats .reactions-inline {
+  display: flex; align-items: center; gap: 3px; font-weight: 500;
+}
+.reaction-bubble {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--gray-100);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; border: 2px solid #fff; margin-left: -6px;
+}
+.reaction-bubble:first-child { margin-left: 0; }
+
+.post-actions {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 2px; padding-top: 4px;
+}
+.post-action {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; padding: 8px 2px; border-radius: var(--r-sm);
+  color: var(--gray-600); font-size: var(--fs-xs); font-weight: 500;
+  transition: background 0.14s ease, color 0.14s ease;
+  min-height: 52px;
+}
+.post-action svg { width: 20px; height: 20px; stroke-width: 1.9; }
+.post-action:hover { background: var(--gray-100); }
+.post-action:active { transform: scale(0.94); }
+.post-action.active { color: var(--primary-700); }
+.post-action.active svg { fill: var(--primary-100); stroke: var(--primary-700); }
+.post-action.liked { color: var(--danger-500); }
+.post-action.liked svg { fill: var(--danger-100); stroke: var(--danger-500); }
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.empty-state {
+  padding: 48px 24px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.empty-state .icon {
+  width: 84px; height: 84px; border-radius: 50%;
+  background: var(--gray-100);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 38px; margin-bottom: 4px;
+}
+.empty-state .icon svg { width: 40px; height: 40px; color: var(--gray-400); }
+.empty-state h3 { font-size: var(--fs-lg); font-weight: 700; color: var(--gray-800); }
+.empty-state p { font-size: var(--fs-sm); color: var(--gray-500); max-width: 280px; line-height: 1.6; }
+.empty-state .btn { margin-top: 10px; }
+
+/* ============================================================
+   SKELETON
+   ============================================================ */
+.skeleton {
+  background: linear-gradient(90deg, #eef2f5 25%, #e2e8f0 37%, #eef2f5 63%);
+  background-size: 400px 100%;
+  animation: shimmer 1.35s linear infinite;
+  border-radius: var(--r-sm);
+}
+.sk-card {
+  background: var(--surface); border-radius: var(--r-lg);
+  padding: 14px; margin-bottom: 12px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+}
+.sk-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.sk-avatar { width: 40px; height: 40px; border-radius: 50%; }
+.sk-line { height: 12px; border-radius: 6px; }
+.sk-line.w40 { width: 40%; }
+.sk-line.w60 { width: 60%; }
+.sk-line.w80 { width: 80%; }
+.sk-line.w100 { width: 100%; }
+.sk-line.title { height: 16px; width: 78%; margin-bottom: 8px; }
+.sk-line.desc { height: 12px; width: 100%; margin-bottom: 6px; }
+.sk-img { width: 100%; height: 180px; border-radius: var(--r-md); margin-top: 10px; }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 12px 18px;
+  border-radius: var(--r-md);
+  font-size: var(--fs-base); font-weight: 600;
+  min-height: 46px;
+  transition: transform 0.1s ease, box-shadow 0.16s ease, background 0.16s ease;
+  cursor: pointer; white-space: nowrap;
+  border: 1.5px solid transparent;
+}
+.btn:active { transform: scale(0.97); }
+.btn svg { width: 18px; height: 18px; }
+
+.btn-primary {
+  background: var(--primary-600); color: #fff;
+  box-shadow: 0 6px 16px rgba(13,148,136,0.30);
+}
+.btn-primary:hover:not(:disabled) { background: var(--primary-700); }
+.btn-primary:disabled { opacity: 0.55; box-shadow: none; cursor: not-allowed; }
+
+.btn-secondary { background: var(--gray-100); color: var(--gray-800); }
+.btn-secondary:hover { background: var(--gray-200); }
+
+.btn-outline {
+  background: transparent; color: var(--primary-700);
+  border-color: var(--primary-200);
+}
+.btn-outline:hover { background: var(--primary-50); }
+
+.btn-ghost { background: transparent; color: var(--gray-700); }
+.btn-ghost:hover { background: var(--gray-100); }
+
+.btn-danger { background: var(--danger-500); color: #fff; }
+.btn-danger:hover { background: var(--danger-600); }
+
+.btn-block { width: 100%; }
+.btn-sm { padding: 8px 14px; min-height: 36px; font-size: var(--fs-sm); }
+.btn-lg { padding: 14px 22px; min-height: 52px; font-size: var(--fs-md); }
+
+.btn .spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff; border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ============================================================
+   FORM CONTROLS
+   ============================================================ */
+.form-group { margin-bottom: 16px; }
+
+.form-label {
+  display: block; font-size: var(--fs-sm); font-weight: 600;
+  color: var(--gray-800); margin-bottom: 6px;
+}
+.form-label .optional { font-weight: 400; color: var(--gray-500); font-size: var(--fs-xs); }
+.form-label .required { color: var(--danger-500); margin-left: 2px; }
+
+.form-control, .form-select, .form-textarea {
+  width: 100%; padding: 12px 14px;
+  border-radius: var(--r-md);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-size: var(--fs-base); color: var(--gray-900);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  min-height: 48px;
+}
+.form-control:focus, .form-select:focus, .form-textarea:focus {
+  outline: none; border-color: var(--primary-500);
+  box-shadow: 0 0 0 4px rgba(13,148,136,0.12);
+}
+.form-control::placeholder, .form-textarea::placeholder { color: var(--gray-400); }
+.form-textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+.form-hint { font-size: var(--fs-xs); color: var(--gray-500); margin-top: 6px; line-height: 1.5; }
+.form-error { font-size: var(--fs-xs); color: var(--danger-500); margin-top: 6px; font-weight: 500; }
+
+.check-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; }
+.check-item input { width: 20px; height: 20px; accent-color: var(--primary-600); }
+
+/* ============================================================
+   BOTTOM NAV
+   ============================================================ */
+.bottom-nav-wrap {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: var(--z-nav);
+  padding: 0 12px calc(12px + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+  display: flex; justify-content: center;
+}
+.bottom-nav {
+  pointer-events: auto;
+  width: 100%; max-width: calc(var(--app-max) - 24px);
+  height: var(--nav-height);
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-radius: var(--r-2xl);
+  box-shadow: var(--shadow-nav);
+  border: 1px solid var(--border);
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  align-items: center; padding: 0 6px;
+  position: relative;
+}
+.nav-item {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; height: 100%; border-radius: var(--r-lg);
+  color: var(--gray-500); font-size: 11px; font-weight: 500;
+  transition: color 0.16s ease, transform 0.1s ease;
+  position: relative; padding: 4px; min-height: 44px;
+}
+.nav-item svg { width: 22px; height: 22px; stroke-width: 2; transition: transform 0.16s ease; }
+.nav-item .nav-label { line-height: 1; margin-top: 2px; }
+.nav-item:active { transform: scale(0.9); }
+.nav-item.active { color: var(--primary-700); }
+.nav-item.active svg { stroke: var(--primary-700); transform: translateY(-1px); }
+.nav-item.active .nav-label { font-weight: 700; }
+
+.nav-item.nav-center { transform: translateY(-14px); }
+.nav-item.nav-center .nav-plus {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(140deg, var(--primary-500), var(--primary-700));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-float);
+  border: 4px solid #fff;
+  transition: transform 0.16s ease;
+}
+.nav-item.nav-center .nav-plus svg { width: 24px; height: 24px; stroke-width: 2.6; color: #fff; }
+.nav-item.nav-center:active .nav-plus { transform: scale(0.9); }
+.nav-item.nav-center .nav-label { color: var(--primary-700); font-weight: 700; margin-top: 6px; }
+
+/* ============================================================
+   SEARCH BAR
+   ============================================================ */
+.search-bar {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--gray-100); border-radius: var(--r-pill);
+  padding: 10px 16px; margin: 0 0 12px; min-height: 46px;
+}
+.search-bar svg { width: 20px; height: 20px; color: var(--gray-500); flex-shrink: 0; }
+.search-bar input {
+  flex: 1; background: transparent; border: none; outline: none;
+  font-size: var(--fs-base); color: var(--gray-800);
+}
+.search-bar input::placeholder { color: var(--gray-500); }
+
+/* ============================================================
+   AUTH SCREEN
+   ============================================================ */
+.auth-screen {
+  min-height: 100vh; min-height: 100dvh;
+  background: linear-gradient(180deg, var(--primary-600) 0%, var(--primary-700) 32%, var(--bg) 32%);
+  padding: 0 20px calc(28px + env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; align-items: center;
+}
+.auth-hero {
+  width: 100%; max-width: 400px;
+  padding: 40px 0 24px; text-align: center; color: #fff;
+}
+.auth-hero .logo {
+  width: 76px; height: 76px; margin: 0 auto 16px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px; box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+.auth-hero h1 { font-size: var(--fs-2xl); font-weight: 700; margin-bottom: 4px; }
+.auth-hero p { font-size: var(--fs-sm); opacity: 0.9; }
+
+.auth-card {
+  width: 100%; max-width: 400px;
+  background: var(--surface);
+  border-radius: var(--r-2xl);
+  padding: 26px 22px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+.auth-tabs {
+  display: flex; gap: 4px;
+  background: var(--gray-100);
+  border-radius: var(--r-pill);
+  padding: 4px; margin-bottom: 22px;
+}
+.auth-tab {
+  flex: 1; padding: 10px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm); font-weight: 600;
+  color: var(--gray-600);
+  transition: all 0.16s ease; text-align: center;
+}
+.auth-tab.active {
+  background: var(--surface); color: var(--primary-700);
+  box-shadow: var(--shadow-xs);
+}
+.auth-form { display: none; }
+.auth-form.active { display: block; animation: fadeIn 0.2s ease; }
+.auth-switch {
+  text-align: center; font-size: var(--fs-sm);
+  color: var(--gray-600); margin-top: 16px;
+}
+.auth-switch a {
+  color: var(--primary-700); font-weight: 600; cursor: pointer;
+}
+
+/* ============================================================
+   PROFILE
+   ============================================================ */
+.profile-header {
+  background: linear-gradient(160deg, var(--primary-600), var(--primary-800));
+  padding: 26px 20px 34px;
+  color: #fff;
+  border-radius: 0 0 var(--r-2xl) var(--r-2xl);
+  position: relative; overflow: hidden;
+}
+.profile-header::after {
+  content: ""; position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: rgba(255,255,255,0.07); border-radius: 50%;
+}
+.profile-top-row {
+  display: flex; align-items: center; gap: 14px;
+  position: relative; z-index: 1;
+}
+.profile-info { flex: 1; min-width: 0; }
+.profile-name {
+  font-size: var(--fs-xl); font-weight: 700;
+  line-height: 1.2; margin-bottom: 2px;
+}
+.profile-area {
+  font-size: var(--fs-sm); opacity: 0.9;
+  display: flex; align-items: center; gap: 4px;
+}
+.profile-area svg { width: 14px; height: 14px; }
+
+.profile-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 4px; margin-top: 22px;
+  position: relative; z-index: 1;
+}
+.stat-box {
+  text-align: center; padding: 10px 6px;
+  background: rgba(255,255,255,0.12);
+  border-radius: var(--r-md);
+  backdrop-filter: blur(6px);
+}
+.stat-box .num { font-size: var(--fs-xl); font-weight: 700; line-height: 1.1; }
+.stat-box .lbl { font-size: var(--fs-xs); opacity: 0.9; margin-top: 2px; }
+
+.profile-menu {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  margin: 16px 14px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.profile-menu-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.14s ease;
+  cursor: pointer; min-height: 56px;
+}
+.profile-menu-item:last-child { border-bottom: none; }
+.profile-menu-item:active { background: var(--gray-50); }
+
+.profile-menu-item .mi-icon {
+  width: 38px; height: 38px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--primary-50); color: var(--primary-700);
+  flex-shrink: 0;
+}
+.profile-menu-item .mi-icon svg { width: 20px; height: 20px; stroke-width: 2; }
+.profile-menu-item .mi-icon.danger { background: var(--danger-50); color: var(--danger-600); }
+.profile-menu-item .mi-text { flex: 1; }
+.profile-menu-item .mi-title {
+  font-size: var(--fs-base); font-weight: 600; color: var(--gray-900);
+}
+.profile-menu-item .mi-sub {
+  font-size: var(--fs-xs); color: var(--gray-500); margin-top: 1px;
+}
+.profile-menu-item .mi-chevron { color: var(--gray-400); flex-shrink: 0; }
+.profile-menu-item .mi-chevron svg { width: 18px; height: 18px; }
+
+/* ============================================================
+   CREATE CATEGORY GRID
+   ============================================================ */
+.create-category-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; padding: 4px;
+}
+.create-cat-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 16px 12px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; text-align: center;
+  transition: all 0.16s ease; cursor: pointer;
+  min-height: 108px;
+}
+.create-cat-card:active {
+  transform: scale(0.97);
+  border-color: var(--primary-400);
+}
+.create-cat-card .emoji { font-size: 30px; line-height: 1; }
+.create-cat-card .cat-name {
+  font-size: var(--fs-sm); font-weight: 600;
+  color: var(--gray-800); line-height: 1.3;
+}
+.create-cat-card.selected {
+  border-color: var(--primary-500);
+  background: var(--primary-50);
+}
+
+/* ============================================================
+   IMAGE UPLOAD
+   ============================================================ */
+.image-upload-zone {
+  border: 2px dashed var(--gray-300);
+  border-radius: var(--r-lg);
+  padding: 24px 16px;
+  text-align: center;
+  background: var(--gray-50);
+  transition: all 0.16s ease;
+  cursor: pointer;
+}
+.image-upload-zone:hover, .image-upload-zone.dragover {
+  border-color: var(--primary-500);
+  background: var(--primary-50);
+}
+.image-upload-zone .icon-circle {
+  width: 56px; height: 56px;
+  margin: 0 auto 10px; border-radius: 50%;
+  background: var(--primary-100); color: var(--primary-700);
+  display: flex; align-items: center; justify-content: center;
+}
+.image-upload-zone .icon-circle svg { width: 26px; height: 26px; }
+.image-upload-zone .title {
+  font-size: var(--fs-base); font-weight: 600;
+  color: var(--gray-800); margin-bottom: 2px;
+}
+.image-upload-zone .sub { font-size: var(--fs-xs); color: var(--gray-500); }
+
+.image-preview-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 8px; margin-top: 12px;
+}
+.image-preview-item {
+  position: relative; aspect-ratio: 1;
+  border-radius: var(--r-md);
+  overflow: hidden; background: var(--gray-100);
+  border: 1px solid var(--border);
+}
+.image-preview-item img { width: 100%; height: 100%; object-fit: cover; }
+.image-preview-item .remove-btn {
+  position: absolute; top: 4px; right: 4px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(0,0,0,0.68); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; line-height: 1;
+}
+.image-preview-item .upload-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: #fff; font-size: 11px; gap: 6px;
+}
+.image-preview-item .progress-ring {
+  width: 28px; height: 28px;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: #fff; border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+/* ============================================================
+   MODAL / SHEET
+   ============================================================ */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(15,23,42,0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: var(--z-sheet);
+  display: flex; align-items: flex-end; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.overlay.active { opacity: 1; visibility: visible; }
+.overlay.center { align-items: center; padding: 20px; }
+
+.sheet {
+  width: 100%; max-width: var(--app-max);
+  background: var(--surface);
+  border-radius: var(--r-2xl) var(--r-2xl) 0 0;
+  max-height: 92vh; overflow: hidden;
+  display: flex; flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.28s cubic-bezier(0.22,1,0.36,1);
+  box-shadow: var(--shadow-xl);
+}
+.overlay.active .sheet { transform: translateY(0); }
+
+.sheet-grip {
+  width: 40px; height: 4px;
+  background: var(--gray-300); border-radius: 999px;
+  margin: 10px auto 4px; flex-shrink: 0;
+}
+.sheet-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.sheet-title {
+  font-size: var(--fs-lg); font-weight: 700;
+  color: var(--gray-900); flex: 1;
+}
+.sheet-close {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray-500); background: var(--gray-100);
+  flex-shrink: 0;
+}
+.sheet-close:hover { background: var(--gray-200); }
+.sheet-close svg { width: 18px; height: 18px; }
+.sheet-body {
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
+  padding: 18px; flex: 1;
+}
+.sheet-footer {
+  padding: 14px 18px calc(16px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--border);
+  background: var(--surface-2); flex-shrink: 0;
+}
+
+.modal {
+  width: 100%; max-width: 380px;
+  background: var(--surface);
+  border-radius: var(--r-2xl);
+  padding: 24px 22px 20px;
+  text-align: center;
+  transform: scale(0.94); opacity: 0;
+  transition: transform 0.24s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease;
+  box-shadow: var(--shadow-xl);
+}
+.overlay.active .modal { transform: scale(1); opacity: 1; }
+
+.modal .modal-icon {
+  width: 68px; height: 68px;
+  margin: 0 auto 14px; border-radius: 50%;
+  background: var(--primary-50); color: var(--primary-700);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal .modal-icon.warn { background: var(--warn-50); color: var(--accent-600); }
+.modal .modal-icon.danger { background: var(--danger-50); color: var(--danger-600); }
+.modal .modal-icon svg { width: 32px; height: 32px; stroke-width: 2; }
+.modal h3 { font-size: var(--fs-lg); font-weight: 700; color: var(--gray-900); margin-bottom: 6px; }
+.modal p { font-size: var(--fs-sm); color: var(--gray-600); line-height: 1.6; margin-bottom: 18px; }
+.modal .modal-actions {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.modal .modal-actions.single { grid-template-columns: 1fr; }
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+#toast-container {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 32px);
+  left: 50%; transform: translateX(-50%);
+  z-index: var(--z-toast);
+  display: flex; flex-direction: column; gap: 8px;
+  align-items: center; pointer-events: none;
+  width: calc(100% - 32px); max-width: 380px;
+}
+.toast {
+  pointer-events: auto;
+  background: var(--gray-900); color: #fff;
+  border-radius: var(--r-pill);
+  padding: 12px 18px;
+  font-size: var(--fs-sm); font-weight: 500;
+  display: flex; align-items: center; gap: 8px;
+  box-shadow: var(--shadow-xl);
+  animation: slideUp 0.25s ease, fadeIn 0.25s ease;
+  max-width: 100%;
+}
+.toast.success { background: var(--success-600); }
+.toast.error { background: var(--danger-600); }
+.toast.info { background: var(--primary-700); }
+.toast.warn { background: var(--accent-600); }
+.toast svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* ============================================================
+   LOADING OVERLAY
+   ============================================================ */
+.loading-overlay {
+  position: fixed; inset: 0;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(2px);
+  z-index: calc(var(--z-toast) - 10);
+  display: none; align-items: center; justify-content: center;
+  flex-direction: column; gap: 14px;
+}
+.loading-overlay.active { display: flex; }
+.loading-spinner {
+  width: 44px; height: 44px;
+  border: 4px solid var(--primary-100);
+  border-top-color: var(--primary-600);
+  border-radius: 50%;
+  animation: spin 0.85s linear infinite;
+}
+.loading-text { font-size: var(--fs-sm); color: var(--gray-600); font-weight: 500; }
+
+/* ============================================================
+   DETAIL PAGE
+   ============================================================ */
+.detail-page { min-height: 100vh; min-height: 100dvh; background: var(--bg); }
+.detail-header {
+  position: sticky; top: 0; z-index: var(--z-header);
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.detail-content { padding: 16px 16px calc(var(--nav-height) + 80px); }
+.detail-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+/* ============================================================
+   COMMENTS
+   ============================================================ */
+.comment {
+  display: flex; gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.comment:last-child { border-bottom: none; }
+.comment-body { flex: 1; min-width: 0; }
+.comment-head {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 3px;
+}
+.comment-author { font-size: var(--fs-sm); font-weight: 600; color: var(--gray-900); }
+.comment-time { font-size: var(--fs-xs); color: var(--gray-500); }
+.comment-text {
+  font-size: var(--fs-base); color: var(--gray-700);
+  line-height: 1.55; word-break: break-word;
+}
+.comment-actions {
+  display: flex; gap: 14px; margin-top: 6px;
+  font-size: var(--fs-xs); color: var(--gray-500);
+}
+.comment-actions button { font-weight: 500; color: var(--gray-600); }
+.comment-actions button:hover { color: var(--primary-700); }
+.comment-replies {
+  margin-top: 8px; padding-left: 14px;
+  border-left: 2px solid var(--border);
+}
+
+.comment-input-bar {
+  position: sticky; bottom: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 10px 12px calc(12px + env(safe-area-inset-bottom, 0px));
+  display: flex; gap: 8px; align-items: flex-end;
+}
+.comment-input-bar textarea {
+  flex: 1;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 10px 14px;
+  font-size: var(--fs-base);
+  resize: none; max-height: 100px; min-height: 44px;
+  outline: none; font-family: inherit;
+}
+.comment-input-bar textarea:focus { border-color: var(--primary-500); }
+.comment-send-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--primary-600); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.comment-send-btn:disabled { background: var(--gray-300); }
+.comment-send-btn svg { width: 20px; height: 20px; }
+
+/* ============================================================
+   REACTION PICKER
+   ============================================================ */
+.reaction-picker {
+  display: flex; gap: 4px;
+  padding: 10px;
+  background: var(--surface);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+.reaction-option {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  transition: transform 0.14s ease, background 0.14s ease;
+}
+.reaction-option:hover { background: var(--gray-100); transform: scale(1.15); }
+.reaction-option:active { transform: scale(0.9); }
+.reaction-option.selected { background: var(--primary-100); transform: scale(1.1); }
+
+/* ============================================================
+   NOTIFICATIONS
+   ============================================================ */
+.notif-item {
+  display: flex; gap: 12px;
+  padding: 14px;
+  background: var(--surface);
+  border-radius: var(--r-md);
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.14s ease;
+}
+.notif-item:active { background: var(--gray-50); }
+.notif-item.unread {
+  background: var(--primary-50);
+  border-color: var(--primary-200);
+}
+.notif-item .notif-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--primary-100); color: var(--primary-700);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.notif-item .notif-icon svg { width: 20px; height: 20px; }
+.notif-body { flex: 1; min-width: 0; }
+.notif-text {
+  font-size: var(--fs-sm); color: var(--gray-800);
+  line-height: 1.5; margin-bottom: 3px;
+}
+.notif-time { font-size: var(--fs-xs); color: var(--gray-500); }
+
+/* ============================================================
+   ADMIN PANEL
+   ============================================================ */
+.admin-layout {
+  min-height: 100vh; min-height: 100dvh;
+  background: var(--bg); padding-bottom: 32px;
+}
+.admin-stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 18px;
+}
+.admin-stat-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 14px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xs);
+}
+.admin-stat-card .stat-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
+  background: var(--primary-50); color: var(--primary-700);
+}
+.admin-stat-card .stat-icon svg { width: 18px; height: 18px; }
+.admin-stat-card .stat-num {
+  font-size: 24px; font-weight: 700;
+  color: var(--gray-900); line-height: 1.1;
+}
+.admin-stat-card .stat-label {
+  font-size: var(--fs-xs); color: var(--gray-500); margin-top: 2px;
+}
+
+.admin-tabs {
+  display: flex; gap: 4px;
+  overflow-x: auto;
+  padding: 4px 14px 10px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 40;
+}
+.admin-tab {
+  padding: 8px 14px; border-radius: var(--r-pill);
+  font-size: var(--fs-sm); font-weight: 500;
+  background: var(--gray-100); color: var(--gray-700);
+  white-space: nowrap; flex-shrink: 0;
+}
+.admin-tab.active { background: var(--primary-600); color: #fff; }
+
+.admin-list-item {
+  background: var(--surface);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  display: flex; gap: 10px; align-items: center;
+}
+.admin-list-item .info { flex: 1; min-width: 0; }
+.admin-list-item .info h4 {
+  font-size: var(--fs-sm); font-weight: 600;
+  color: var(--gray-900); margin-bottom: 2px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.admin-list-item .info p {
+  font-size: var(--fs-xs); color: var(--gray-500);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.status-pill {
+  padding: 4px 10px; border-radius: var(--r-pill);
+  font-size: var(--fs-xs); font-weight: 600;
+}
+.status-pill.pending { background: var(--warn-50); color: var(--accent-600); }
+.status-pill.approved { background: var(--success-50); color: var(--success-600); }
+.status-pill.rejected { background: var(--danger-50); color: var(--danger-600); }
+.status-pill.blocked { background: var(--danger-50); color: var(--danger-600); }
+.status-pill.active { background: var(--success-50); color: var(--success-600); }
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.text-muted { color: var(--gray-500); }
+.mt-1 { margin-top: 4px; }
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; }
+.mb-1 { margin-bottom: 4px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-3 { margin-bottom: 12px; }
+.mb-4 { margin-bottom: 16px; }
+.flex { display: flex; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 481px) {
+  .bottom-nav-wrap { padding: 0 16px 18px; }
+}
+@media (max-width: 360px) {
+  :root { --fs-base: 14px; --fs-md: 15px; --nav-height: 64px; }
+  .post-action span { font-size: 10px; }
+  .create-category-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SPLASH
+     ============================================================ -->
+<div id="splash">
+  <div class="splash-logo">
+    <img src="assets/logo.png" alt="লোগো" style="width:100%;height:100%;object-fit:contain;border-radius:22px;">
+  </div>
+  <div class="splash-title">আমাদের এলাকা</div>
+  <div class="splash-sub">আপনার কমিউনিটি, আপনার কণ্ঠস্বর</div>
+  <div class="splash-loader"></div>
+</div>
+
+<!-- ============================================================
+     APP ROOT
+     ============================================================ -->
+<div id="app">
+
+  <!-- ========================================================
+       AUTH SCREEN
+       ======================================================== -->
+  <section id="screen-auth" class="screen">
+    <div class="auth-screen">
+      <div class="auth-hero">
+        <div class="auth-hero">
+  <div class="logo">
+    <img src="assets/logo.png" alt="লোগো" style="width:100%;height:100%;object-fit:contain;border-radius:22px;">
+  </div>
+  <h1>আমাদের এলাকা</h1>
+        <p>আপনার পাড়া, আপনার মানুষজন</p>
+      </div>
+
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-auth-tab="login">লগইন</button>
+          <button class="auth-tab" data-auth-tab="register">নিবন্ধন</button>
+        </div>
+
+        <!-- LOGIN -->
+        <form id="login-form" class="auth-form active" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="login-email">ইমেইল</label>
+            <input type="email" id="login-email" class="form-control"
+                   placeholder="আপনার ইমেইল লিখুন" autocomplete="email" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="login-password">পাসওয়ার্ড</label>
+            <input type="password" id="login-password" class="form-control"
+                   placeholder="আপনার পাসওয়ার্ড লিখুন" autocomplete="current-password" required />
+          </div>
+          <div class="flex-between mb-3">
+            <label class="check-item" style="padding:0;">
+              <input type="checkbox" id="remember-me" />
+              <span style="font-size:13px;color:var(--gray-600);">আমাকে মনে রাখুন</span>
+            </label>
+            <a href="#" class="forgot-link" style="font-size:13px;font-weight:600;">পাসওয়ার্ড ভুলে গেছেন?</a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="login-submit">
+            লগইন করুন
+          </button>
+        </form>
+
+        <!-- REGISTER -->
+        <form id="register-form" class="auth-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="reg-name">আপনার নাম <span class="required">*</span></label>
+            <input type="text" id="reg-name" class="form-control"
+                   placeholder="আপনার পূর্ণ নাম লিখুন" autocomplete="name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-email">ইমেইল <span class="required">*</span></label>
+            <input type="email" id="reg-email" class="form-control"
+                   placeholder="example@email.com" autocomplete="email" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-password">পাসওয়ার্ড <span class="required">*</span></label>
+            <input type="password" id="reg-password" class="form-control"
+                   placeholder="কমপক্ষে ৬ অক্ষরের পাসওয়ার্ড" autocomplete="new-password"
+                   required minlength="6" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-area">আপনার এলাকা <span class="required">*</span></label>
+            <input type="text" id="reg-area" class="form-control"
+                   placeholder="যেমন: মুগদা, ঢাকা" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">মোবাইল নম্বর <span class="optional">(ঐচ্ছিক)</span></label>
+            <input type="tel" id="reg-phone" class="form-control"
+                   placeholder="01XXXXXXXXX" autocomplete="tel" />
+          </div>
+          <label class="check-item mb-3" style="align-items:flex-start;">
+            <input type="checkbox" id="reg-agree" style="margin-top:3px;" />
+            <span style="font-size:13px;color:var(--gray-600);line-height:1.5;">
+              আমি <a href="#" class="rules-link" style="font-weight:600;">কমিউনিটি নিয়ম</a> মেনে চলতে সম্মত আছি।
+            </span>
+          </label>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="register-submit">
+            নিবন্ধন করুন
+          </button>
+        </form>
+
+        <!-- FORGOT -->
+        <form id="forgot-form" class="auth-form" novalidate>
+          <div class="text-center mb-3">
+            <h3 style="font-size:17px;font-weight:700;">পাসওয়ার্ড রিসেট করুন</h3>
+            <p style="font-size:13px;color:var(--gray-500);margin-top:4px;">
+              আপনার ইমেইল দিন, আমরা পাসওয়ার্ড রিসেট করার লিংক পাঠাব।
+            </p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="forgot-email">ইমেইল</label>
+            <input type="email" id="forgot-email" class="form-control"
+                   placeholder="আপনার ইমেইল লিখুন" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="forgot-submit">
+            রিসেট লিংক পাঠান
+          </button>
+          <div class="auth-switch">
+            <a class="back-to-login">← লগইনে ফিরে যান</a>
+          </div>
+        </form>
+      </div>
+
+      <div style="margin-top:18px;">
+        <button class="btn btn-ghost btn-sm browse-guest-btn">
+          লগইন ছাড়াই দেখুন →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       HOME
+       ======================================================== -->
+  <section id="screen-home" class="screen active">
+    <header class="app-header">
+  <div class="logo">
+    <img src="assets/logo.png" alt="লোগো" style="width:100%;height:100%;object-fit:contain;border-radius:12px;">
+  </div>
+  <div class="header-title-wrap">
+    <div class="header-title" id="home-area-name">আমাদের এলাকা</div>
+        <div class="header-sub">স্থানীয় কমিউনিটি</div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="home-search-btn" aria-label="খুঁজুন">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="home-notif-btn" aria-label="নোটিফিকেশন">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+          </svg>
+          <span class="badge-dot hidden" id="home-notif-badge">0</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="catbar-wrap">
+      <div class="catbar no-scrollbar" id="home-catbar">
+        <button class="cat-chip active" data-cat="all"><span class="emoji">📋</span> সব</button>
+        <button class="cat-chip" data-cat="general"><span class="emoji">📰</span> সাধারণ</button>
+        <button class="cat-chip" data-cat="problem"><span class="emoji">🚨</span> সমস্যা</button>
+        <button class="cat-chip" data-cat="tolet"><span class="emoji">🏠</span> টু-লেট</button>
+        <button class="cat-chip" data-cat="missing"><span class="emoji">🔎</span> নিখোঁজ</button>
+        <button class="cat-chip" data-cat="found"><span class="emoji">👤</span> পাওয়া গেছে</button>
+        <button class="cat-chip" data-cat="lostfound"><span class="emoji">📦</span> হারানো/পাওয়া</button>
+        <button class="cat-chip" data-cat="job"><span class="emoji">💼</span> চাকরি</button>
+        <button class="cat-chip" data-cat="buysell"><span class="emoji">🛍️</span> কেনাবেচা</button>
+        <button class="cat-chip" data-cat="announcement"><span class="emoji">📢</span> ঘোষণা</button>
+        <button class="cat-chip" data-cat="urgent"><span class="emoji">🆘</span> জরুরি</button>
+      </div>
+    </div>
+
+    <main class="main-content">
+      <div id="home-featured-section" class="hidden">
+        <div class="section-title"><h2>📌 জরুরি ও গুরুত্বপূর্ণ</h2></div>
+        <div id="home-featured-list"></div>
+      </div>
+
+      <div class="section-title">
+        <h2>🆕 সর্বশেষ পোস্ট</h2>
+        <a class="link" id="home-see-all">সব দেখুন</a>
+      </div>
+      <div id="home-feed"></div>
+
+      <div id="home-empty" class="empty-state hidden">
+        <div class="icon">📭</div>
+        <h3>এখনও কোনো পোস্ট নেই।</h3>
+        <p>আপনি প্রথম পোস্ট তৈরি করে এলাকার মানুষদের সাথে যুক্ত হোন।</p>
+        <button class="btn btn-primary" data-action="open-create">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          প্রথম পোস্ট করুন
+        </button>
+      </div>
+
+      <div id="home-skeleton" class="hidden">
+        <div class="sk-card">
+          <div class="sk-row">
+            <div class="skeleton sk-avatar"></div>
+            <div style="flex:1;">
+              <div class="skeleton sk-line w40" style="margin-bottom:6px;"></div>
+              <div class="skeleton sk-line w60" style="height:10px;"></div>
+            </div>
+          </div>
+          <div class="skeleton sk-line title"></div>
+          <div class="skeleton sk-line desc"></div>
+          <div class="skeleton sk-line desc w80"></div>
+          <div class="skeleton sk-img"></div>
+        </div>
+        <div class="sk-card">
+          <div class="sk-row">
+            <div class="skeleton sk-avatar"></div>
+            <div style="flex:1;">
+              <div class="skeleton sk-line w40" style="margin-bottom:6px;"></div>
+              <div class="skeleton sk-line w60" style="height:10px;"></div>
+            </div>
+          </div>
+          <div class="skeleton sk-line title"></div>
+          <div class="skeleton sk-line desc"></div>
+          <div class="skeleton sk-img" style="height:140px;"></div>
+        </div>
+      </div>
+
+      <div id="home-load-more" class="hidden" style="padding:20px 0;text-align:center;">
+        <div class="loading-spinner" style="margin:0 auto;"></div>
+        <p style="font-size:13px;color:var(--gray-500);margin-top:8px;">লোড হচ্ছে...</p>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========================================================
+       ANNOUNCEMENTS (বিজ্ঞপ্তি)
+       ======================================================== -->
+  <section id="screen-announcements" class="screen">
+    <header class="app-header">
+      <button class="icon-btn" data-action="back-to-home" aria-label="ফিরে যান">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <div class="header-title-wrap">
+        <div class="header-title">📢 বিজ্ঞপ্তি</div>
+        <div class="header-sub">কর্তৃপক্ষের ঘোষণা ও তথ্য</div>
+      </div>
+    </header>
+    <main class="main-content">
+      <div id="announcements-list"></div>
+      <div id="announcements-empty" class="empty-state hidden">
+        <div class="icon">📢</div>
+        <h3>এখনও কোনো বিজ্ঞপ্তি নেই।</h3>
+        <p>এলাকার গুরুত্বপূর্ণ ঘোষণা এখানে দেখা যাবে।</p>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========================================================
+       NOTIFICATIONS
+       ======================================================== -->
+  <section id="screen-notifications" class="screen">
+    <header class="app-header">
+      <button class="icon-btn" data-action="back-to-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <div class="header-title-wrap">
+        <div class="header-title">🔔 নোটিফিকেশন</div>
+        <div class="header-sub">আপনার কার্যক্রমের আপডেট</div>
+      </div>
+      <button class="icon-btn" id="mark-all-read-btn" aria-label="সব পড়া হয়েছে">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </button>
+    </header>
+    <main class="main-content">
+      <div id="notifications-list"></div>
+      <div id="notifications-empty" class="empty-state hidden">
+        <div class="icon">🔔</div>
+        <h3>নতুন কোনো নোটিফিকেশন নেই।</h3>
+        <p>আপনার পোস্ট বা মন্তব্যে আপডেট এলে এখানে দেখা যাবে।</p>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========================================================
+       PROFILE
+       ======================================================== -->
+  <section id="screen-profile" class="screen">
+    <div id="profile-logged-out" class="hidden">
+      <div class="empty-state" style="padding-top:80px;">
+        <div class="icon">👤</div>
+        <h3>আপনি লগইন করেননি</h3>
+        <p>নিজের প্রোফাইল দেখতে, পোস্ট করতে ও মন্তব্য করতে লগইন করুন।</p>
+        <button class="btn btn-primary" data-action="open-login">লগইন করুন</button>
+        <button class="btn btn-outline" data-action="open-register">নতুন অ্যাকাউন্ট খুলুন</button>
+      </div>
+    </div>
+
+    <div id="profile-logged-in" class="hidden">
+      <div class="profile-header">
+        <div class="profile-top-row">
+          <div class="avatar lg" id="profile-avatar">👤</div>
+          <div class="profile-info">
+            <div class="profile-name" id="profile-name">নাম</div>
+            <div class="profile-area">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span id="profile-area">এলাকা</span>
+            </div>
+          </div>
+          <button class="icon-btn" data-action="edit-profile" aria-label="সম্পাদনা">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/>
+              <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="profile-stats">
+          <div class="stat-box">
+            <div class="num" id="stat-posts">0</div>
+            <div class="lbl">আমার পোস্ট</div>
+          </div>
+          <div class="stat-box">
+            <div class="num" id="stat-saved">0</div>
+            <div class="lbl">সংরক্ষিত</div>
+          </div>
+          <div class="stat-box">
+            <div class="num" id="stat-joined">—</div>
+            <div class="lbl">যোগদান</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-menu">
+        <div class="profile-menu-item" data-action="my-posts">
+          <div class="mi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="16" rx="2"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <div class="mi-text">
+            <div class="mi-title">আমার পোস্ট</div>
+            <div class="mi-sub">আপনার তৈরি সব পোস্ট</div>
+          </div>
+          <div class="mi-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="profile-menu-item" data-action="saved-posts">
+          <div class="mi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div class="mi-text">
+            <div class="mi-title">সংরক্ষিত পোস্ট</div>
+            <div class="mi-sub">পরে পড়ার জন্য রাখা পোস্ট</div>
+          </div>
+          <div class="mi-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="profile-menu-item" data-action="edit-profile">
+          <div class="mi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/>
+            </svg>
+          </div>
+          <div class="mi-text">
+            <div class="mi-title">প্রোফাইল সম্পাদনা</div>
+            <div class="mi-sub">নাম, ছবি বা এলাকা পরিবর্তন</div>
+          </div>
+          <div class="mi-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="profile-menu-item" data-action="settings">
+          <div class="mi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <div class="mi-text">
+            <div class="mi-title">সেটিংস</div>
+            <div class="mi-sub">অ্যাপ সেটিংস ও নোটিফিকেশন</div>
+          </div>
+          <div class="mi-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="profile-menu-item" data-action="community-rules">
+          <div class="mi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+          </div>
+          <div class="mi-text">
+            <div class="mi-title">কমিউনিটি নিয়ম</div>
+            <div class="mi-sub">আমাদের কমিউনিটির নিয়মাবলী</div>
+          </div>
+          <div class="mi-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="profile-menu-item" data-action="contact-us">
+          <div class="mi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div class="mi-text">
+            <div class="mi-title">যোগাযোগ করুন</div>
+            <div class="mi-sub">আমাদের সাথে যোগাযোগ</div>
+          </div>
+          <div class="mi-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="profile-menu-item admin-only hidden" data-action="admin-panel">
+          <div class="mi-icon" style="background:var(--accent-50);color:var(--accent-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="mi-text">
+            <div class="mi-title">অ্যাডমিন প্যানেল</div>
+            <div class="mi-sub">ব্যবস্থাপনা ও মডারেশন</div>
+          </div>
+          <div class="mi-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="profile-menu-item" data-action="logout">
+          <div class="mi-icon danger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+          </div>
+          <div class="mi-text">
+            <div class="mi-title" style="color:var(--danger-600);">লগআউট</div>
+            <div class="mi-sub">অ্যাকাউন্ট থেকে বেরিয়ে যান</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SEARCH
+       ======================================================== -->
+  <section id="screen-search" class="screen">
+    <header class="app-header">
+      <button class="icon-btn" data-action="back-to-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <div class="header-title-wrap">
+        <div class="header-title">🔍 অনুসন্ধান</div>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="search-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
+        </svg>
+        <input type="search" id="search-input" placeholder="কী খুঁজছেন?" />
+      </div>
+
+      <div class="mb-3 no-scrollbar" style="display:flex;gap:8px;overflow-x:auto;" id="search-filters">
+        <button class="cat-chip active" data-search-cat="all">সব</button>
+        <button class="cat-chip" data-search-cat="posts">পোস্ট</button>
+        <button class="cat-chip" data-search-cat="announcements">বিজ্ঞপ্তি</button>
+        <button class="cat-chip" data-search-cat="missing">নিখোঁজ</button>
+        <button class="cat-chip" data-search-cat="tolet">টু-লেট</button>
+        <button class="cat-chip" data-search-cat="job">চাকরি</button>
+        <button class="cat-chip" data-search-cat="buysell">কেনাবেচা</button>
+      </div>
+
+      <div id="search-results"></div>
+      <div id="search-empty" class="empty-state hidden">
+        <div class="icon">🔍</div>
+        <h3>আপনার খোঁজার সঙ্গে মিল পাওয়া যায়নি।</h3>
+        <p>অন্য শব্দ দিয়ে আবার চেষ্টা করুন।</p>
+      </div>
+      <div id="search-idle" class="empty-state">
+        <div class="icon">💡</div>
+        <h3>কী খুঁজতে চান?</h3>
+        <p>পোস্ট, বিজ্ঞপ্তি, নিখোঁজ, টু-লেট, চাকরি বা কেনাবেচা — সব খুঁজে নিন।</p>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========================================================
+       POST DETAIL
+       ======================================================== -->
+  <section id="screen-post-detail" class="screen">
+    <header class="detail-header">
+      <button class="icon-btn" data-action="back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <div class="header-title-wrap">
+        <div class="header-title">পোস্ট</div>
+      </div>
+      <button class="icon-btn" id="detail-more-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/><circle cx="5" cy="12" r="1.5"/>
+        </svg>
+      </button>
+    </header>
+
+    <div class="detail-content" id="detail-content"></div>
+
+    <div class="comment-input-bar" id="detail-comment-bar">
+      <textarea id="detail-comment-input" rows="1" placeholder="মন্তব্য লিখুন..."></textarea>
+      <button class="comment-send-btn" id="detail-comment-send" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       POST LIST (My Posts / Saved)
+       ======================================================== -->
+  <section id="screen-post-list" class="screen">
+    <header class="app-header">
+      <button class="icon-btn" data-action="back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <div class="header-title-wrap">
+        <div class="header-title" id="post-list-title">পোস্ট</div>
+      </div>
+    </header>
+    <main class="main-content" id="post-list-content"></main>
+  </section>
+
+  <!-- ========================================================
+       COMMUNITY RULES
+       ======================================================== -->
+  <section id="screen-rules" class="screen">
+    <header class="app-header">
+      <button class="icon-btn" data-action="back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <div class="header-title-wrap">
+        <div class="header-title">📖 কমিউনিটি নিয়ম</div>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="detail-card">
+        <h2 style="font-size:19px;font-weight:700;margin-bottom:12px;">আমাদের কমিউনিটির নিয়মাবলী</h2>
+        <p style="font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:16px;">
+          একটি সুন্দর ও নিরাপদ কমিউনিটি গড়ে তুলতে আমরা সবাই এই নিয়মগুলো মেনে চলি।
+        </p>
+        <ol id="rules-list" style="display:flex;flex-direction:column;gap:12px;">
+          <li style="display:flex;gap:12px;">
+            <span style="width:26px;height:26px;background:var(--primary-100);color:var(--primary-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">১</span>
+            <span style="font-size:14px;line-height:1.6;color:var(--gray-700);">সবসময় ভদ্র ভাষা ব্যবহার করুন।</span>
+          </li>
+          <li style="display:flex;gap:12px;">
+            <span style="width:26px;height:26px;background:var(--primary-100);color:var(--primary-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">২</span>
+            <span style="font-size:14px;line-height:1.6;color:var(--gray-700);">ভুল তথ্য ছড়াবেন না — সব খবর যাচাই করে পোস্ট করুন।</span>
+          </li>
+          <li style="display:flex;gap:12px;">
+            <span style="width:26px;height:26px;background:var(--primary-100);color:var(--primary-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">৩</span>
+            <span style="font-size:14px;line-height:1.6;color:var(--gray-700);">অন্যের ব্যক্তিগত তথ্য প্রকাশ করবেন না।</span>
+          </li>
+          <li style="display:flex;gap:12px;">
+            <span style="width:26px;height:26px;background:var(--primary-100);color:var(--primary-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">৪</span>
+            <span style="font-size:14px;line-height:1.6;color:var(--gray-700);">প্রতারণামূলক বা ভুয়া পোস্ট করা নিষিদ্ধ।</span>
+          </li>
+          <li style="display:flex;gap:12px;">
+            <span style="width:26px;height:26px;background:var(--primary-100);color:var(--primary-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">৫</span>
+            <span style="font-size:14px;line-height:1.6;color:var(--gray-700);">অশালীন কোনো কনটেন্ট পোস্ট করবেন না।</span>
+          </li>
+          <li style="display:flex;gap:12px;">
+            <span style="width:26px;height:26px;background:var(--primary-100);color:var(--primary-700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">৬</span>
+            <span style="font-size:14px;line-height:1.6;color:var(--gray-700);">জরুরি বিজ্ঞপ্তিতে যাচাই করা তথ্য দিন।</span>
+          </li>
+        </ol>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========================================================
+       CONTACT
+       ======================================================== -->
+  <section id="screen-contact" class="screen">
+    <header class="app-header">
+      <button class="icon-btn" data-action="back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <div class="header-title-wrap">
+        <div class="header-title">📞 যোগাযোগ</div>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="detail-card mb-3">
+        <h2 style="font-size:18px;font-weight:700;margin-bottom:10px;">📬 আমাদের সাথে যোগাযোগ</h2>
+        <p style="font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:16px;">
+          কোনো সমস্যা, পরামর্শ বা অভিযোগ থাকলে আমাদের সাথে যোগাযোগ করুন।
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="tel:+8801700000000" class="contact-row" style="display:flex;gap:12px;padding:12px;background:var(--gray-50);border-radius:14px;align-items:center;text-decoration:none;color:inherit;">
+            <div style="width:42px;height:42px;border-radius:50%;background:var(--primary-100);color:var(--primary-700);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:600;font-size:14px;">ফোন করুন</div>
+              <div style="font-size:13px;color:var(--gray-500);">০১৭০০-০০০০০০</div>
+            </div>
+          </a>
+
+          <a href="mailto:info@ourelaka.com" class="contact-row" style="display:flex;gap:12px;padding:12px;background:var(--gray-50);border-radius:14px;align-items:center;text-decoration:none;color:inherit;">
+            <div style="width:42px;height:42px;border-radius:50%;background:var(--primary-100);color:var(--primary-700);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:600;font-size:14px;">ইমেইল</div>
+              <div style="font-size:13px;color:var(--gray-500);">info@ourelaka.com</div>
+            </div>
+          </a>
+
+          <a href="https://wa.me/8801700000000" target="_blank" rel="noopener" class="contact-row" style="display:flex;gap:12px;padding:12px;background:var(--gray-50);border-radius:14px;align-items:center;text-decoration:none;color:inherit;">
+            <div style="width:42px;height:42px;border-radius:50%;background:#25d36620;color:#25d366;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.6 6.4A7.8 7.8 0 0 0 3.9 14.7L3 21l6.5-1.7a7.8 7.8 0 0 0 8.1-12.9zM12 19.7a6.5 6.5 0 0 1-3.3-.9l-.2-.1-3.9 1 1-3.8-.1-.2a6.5 6.5 0 1 1 6.5 4zm3.6-4.9c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.4.1-.1.2-.5.7-.6.8-.1.1-.2.1-.4 0-.2-.1-.9-.3-1.7-1-.6-.6-1-1.3-1.1-1.5-.1-.2 0-.3.1-.4l.3-.4c.1-.1.1-.2.2-.4.1-.1 0-.3 0-.4 0-.1-.4-1.1-.6-1.5-.2-.4-.3-.3-.4-.3h-.4c-.1 0-.3.1-.5.2-.2.2-.7.7-.7 1.6s.7 1.9.8 2c.1.1 1.4 2.2 3.5 3 .5.2.9.3 1.2.4.5.2 1 .1 1.3.1.4-.1 1.2-.5 1.4-1 .2-.5.2-.9.1-1z"/>
+              </svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:600;font-size:14px;">হোয়াটসঅ্যাপ</div>
+              <div style="font-size:13px;color:var(--gray-500);">সরাসরি মেসেজ করুন</div>
+            </div>
+          </a>
+
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-row" style="display:flex;gap:12px;padding:12px;background:var(--gray-50);border-radius:14px;align-items:center;text-decoration:none;color:inherit;">
+            <div style="width:42px;height:42px;border-radius:50%;background:#1877f220;color:#1877f2;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8v-6.93H7.9V12H10V9.8c0-2.07 1.23-3.22 3.12-3.22.9 0 1.85.16 1.85.16v2.03h-1.04c-1.03 0-1.35.64-1.35 1.29V12h2.29l-.37 2.87h-1.92v6.93C18.56 20.87 22 16.84 22 12z"/>
+              </svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:600;font-size:14px;">ফেসবুক পেজ</div>
+              <div style="font-size:13px;color:var(--gray-500);">@ourelaka</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">✍️ বার্তা পাঠান</h3>
+        <div class="form-group">
+          <label class="form-label">আপনার নাম</label>
+          <input type="text" class="form-control" id="contact-name" placeholder="আপনার নাম লিখুন" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">ইমেইল বা ফোন</label>
+          <input type="text" class="form-control" id="contact-info" placeholder="যোগাযোগের তথ্য" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">বার্তা</label>
+          <textarea class="form-control form-textarea" id="contact-msg" placeholder="আপনার বার্তা লিখুন..." rows="4"></textarea>
+        </div>
+        <button class="btn btn-primary btn-block btn-lg" id="contact-send-btn">
+          বার্তা পাঠান
+        </button>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========================================================
+       ADMIN PANEL
+       ======================================================== -->
+  <section id="screen-admin" class="screen">
+    <header class="app-header">
+      <button class="icon-btn" data-action="back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <div class="header-title-wrap">
+        <div class="header-title">🛡️ অ্যাডমিন প্যানেল</div>
+        <div class="header-sub">ব্যবস্থাপনা ও মডারেশন</div>
+      </div>
+    </header>
+
+    <div class="admin-tabs no-scrollbar" id="admin-tabs">
+      <button class="admin-tab active" data-admin-tab="dashboard">ড্যাশবোর্ড</button>
+      <button class="admin-tab" data-admin-tab="users">ব্যবহারকারী</button>
+      <button class="admin-tab" data-admin-tab="posts">পোস্ট</button>
+      <button class="admin-tab" data-admin-tab="pending">অপেক্ষমাণ</button>
+      <button class="admin-tab" data-admin-tab="reports">রিপোর্ট</button>
+      <button class="admin-tab" data-admin-tab="announcements">বিজ্ঞপ্তি</button>
+      <button class="admin-tab" data-admin-tab="audit">অডিট লগ</button>
+    </div>
+
+    <div class="admin-layout" style="padding:16px 14px;">
+      <div class="admin-tab-content" data-admin-content="dashboard">
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+              </svg>
+            </div>
+            <div class="stat-num" id="admin-stat-users">0</div>
+            <div class="stat-label">মোট ব্যবহারকারী</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="stat-icon" style="background:var(--success-50);color:var(--success-600);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div class="stat-num" id="admin-stat-active">0</div>
+            <div class="stat-label">সক্রিয় ব্যবহারকারী</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="16" rx="2"/>
+              </svg>
+            </div>
+            <div class="stat-num" id="admin-stat-posts">0</div>
+            <div class="stat-label">মোট পোস্ট</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="stat-icon" style="background:var(--warn-50);color:var(--accent-600);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="stat-num" id="admin-stat-pending">0</div>
+            <div class="stat-label">অপেক্ষমাণ পোস্ট</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="stat-icon" style="background:var(--danger-50);color:var(--danger-600);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <div class="stat-num" id="admin-stat-reports">0</div>
+            <div class="stat-label">রিপোর্ট</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <div class="stat-num" id="admin-stat-comments">0</div>
+            <div class="stat-label">মন্তব্য</div>
+          </div>
+        </div>
+        <div class="section-title"><h2>সাম্প্রতিক কার্যক্রম</h2></div>
+        <div id="admin-recent-activity"></div>
+      </div>
+
+      <div class="admin-tab-content hidden" data-admin-content="users">
+        <div class="search-bar mb-3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input type="search" id="admin-user-search" placeholder="ব্যবহারকারী খুঁজুন" />
+        </div>
+        <div id="admin-users-list"></div>
+      </div>
+
+      <div class="admin-tab-content hidden" data-admin-content="posts">
+        <div id="admin-posts-list"></div>
+      </div>
+
+      <div class="admin-tab-content hidden" data-admin-content="pending">
+        <div id="admin-pending-list"></div>
+      </div>
+
+      <div class="admin-tab-content hidden" data-admin-content="reports">
+        <div id="admin-reports-list"></div>
+      </div>
+
+      <div class="admin-tab-content hidden" data-admin-content="announcements">
+        <button class="btn btn-primary btn-block mb-3" id="new-announcement-btn">
+          ➕ নতুন বিজ্ঞপ্তি তৈরি করুন
+        </button>
+        <div id="admin-announcements-list"></div>
+      </div>
+
+      <div class="admin-tab-content hidden" data-admin-content="audit">
+        <div id="admin-audit-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       BOTTOM NAVIGATION
+       ======================================================== -->
+  <div class="bottom-nav-wrap" id="bottom-nav-wrap">
+    <nav class="bottom-nav" role="navigation">
+      <button class="nav-item active" data-nav="home" aria-label="হোম">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1z"/>
+        </svg>
+        <span class="nav-label">হোম</span>
+      </button>
+
+      <button class="nav-item" data-nav="announcements" aria-label="বিজ্ঞপ্তি">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 11 18-8v18L3 13z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+        </svg>
+        <span class="nav-label">বিজ্ঞপ্তি</span>
+      </button>
+
+      <button class="nav-item nav-center" data-nav="create" aria-label="পোস্ট">
+        <div class="nav-plus">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </div>
+        <span class="nav-label">পোস্ট</span>
+      </button>
+
+      <button class="nav-item" data-nav="notifications" aria-label="নোটিফিকেশন">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+          <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+        </svg>
+        <span class="nav-label">নোটিফিকেশন</span>
+        <span class="badge-dot hidden" id="nav-notif-badge">0</span>
+      </button>
+
+      <button class="nav-item" data-nav="profile" aria-label="প্রোফাইল">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span class="nav-label">প্রোফাইল</span>
+      </button>
+    </nav>
+  </div>
+
+</div><!-- /#app -->
+
+<!-- ============================================================
+     OVERLAY: LOGIN REQUIRED
+     ============================================================ -->
+<div class="overlay center" id="login-required-overlay">
+  <div class="modal">
+    <div class="modal-icon warn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    </div>
+    <h3>লগইন প্রয়োজন</h3>
+    <p>এই কাজটি করতে আপনাকে আগে লগইন করতে হবে।</p>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" data-action="dismiss-login">পরে করব</button>
+      <button class="btn btn-primary" data-action="go-login">লগইন করুন</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     OVERLAY: CREATE POST — CATEGORY PICKER
+     ============================================================ -->
+<div class="overlay" id="create-overlay">
+  <div class="sheet">
+    <div class="sheet-grip"></div>
+    <div class="sheet-header">
+      <div class="sheet-title">নতুন পোস্ট তৈরি করুন</div>
+      <button class="sheet-close" data-action="close-sheet">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <p style="font-size:14px;color:var(--gray-600);margin-bottom:14px;">আপনি কী পোস্ট করতে চান?</p>
+      <div class="create-category-grid" id="create-category-grid">
+        <div class="create-cat-card" data-create-cat="general"><div class="emoji">📰</div><div class="cat-name">সাধারণ পোস্ট</div></div>
+        <div class="create-cat-card" data-create-cat="opinion"><div class="emoji">🗣️</div><div class="cat-name">মতামত</div></div>
+        <div class="create-cat-card" data-create-cat="problem"><div class="emoji">🚨</div><div class="cat-name">এলাকার সমস্যা</div></div>
+        <div class="create-cat-card" data-create-cat="tolet"><div class="emoji">🏠</div><div class="cat-name">বাসা/ফ্ল্যাট ভাড়া</div></div>
+        <div class="create-cat-card" data-create-cat="missing"><div class="emoji">🔎</div><div class="cat-name">নিখোঁজ</div></div>
+        <div class="create-cat-card" data-create-cat="found"><div class="emoji">👤</div><div class="cat-name">পাওয়া গেছে</div></div>
+        <div class="create-cat-card" data-create-cat="lostfound"><div class="emoji">📦</div><div class="cat-name">হারানো/পাওয়া</div></div>
+        <div class="create-cat-card" data-create-cat="announcement"><div class="emoji">📢</div><div class="cat-name">বিজ্ঞপ্তি</div></div>
+        <div class="create-cat-card" data-create-cat="job"><div class="emoji">💼</div><div class="cat-name">চাকরি</div></div>
+        <div class="create-cat-card" data-create-cat="buysell"><div class="emoji">🛍️</div><div class="cat-name">কেনাবেচা</div></div>
+        <div class="create-cat-card" data-create-cat="urgent"><div class="emoji">🆘</div><div class="cat-name">জরুরি</div></div>
+        <div class="create-cat-card" data-create-cat="pet"><div class="emoji">🐾</div><div class="cat-name">হারানো পোষা প্রাণী</div></div>
+        <div class="create-cat-card" data-create-cat="education"><div class="emoji">🎓</div><div class="cat-name">শিক্ষা</div></div>
+        <div class="create-cat-card" data-create-cat="business"><div class="emoji">🏪</div><div class="cat-name">স্থানীয় ব্যবসা</div></div>
+        <div class="create-cat-card" data-create-cat="event"><div class="emoji">🎉</div><div class="cat-name">অনুষ্ঠান</div></div>
+        <div class="create-cat-card" data-create-cat="other"><div class="emoji">📋</div><div class="cat-name">অন্যান্য</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     OVERLAY: POST FORM
+     ============================================================ -->
+<div class="overlay" id="post-form-overlay">
+  <div class="sheet">
+    <div class="sheet-grip"></div>
+    <div class="sheet-header">
+      <button class="sheet-close" data-action="back-to-create" id="post-form-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <div class="sheet-title" id="post-form-title">নতুন পোস্ট</div>
+      <div style="width:36px;"></div>
+    </div>
+    <div class="sheet-body">
+      <form id="post-form" novalidate>
+        <div id="post-form-fields"></div>
+
+        <div class="form-group">
+          <label class="form-label">ছবি <span class="optional">(সর্বোচ্চ ৫টি)</span></label>
+          <div class="image-upload-zone" id="image-upload-zone">
+            <div class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+            </div>
+            <div class="title">ছবি যোগ করুন</div>
+            <div class="sub">JPG, PNG, WebP (সর্বোচ্চ ১০ MB)</div>
+          </div>
+          <input type="file" id="image-input" accept="image/jpeg,image/jpg,image/png,image/webp" multiple hidden />
+          <div class="image-preview-grid" id="image-preview-grid"></div>
+        </div>
+
+        <div class="form-hint" style="background:var(--primary-50);color:var(--primary-800);padding:10px 12px;border-radius:var(--r-md);font-size:12.5px;line-height:1.55;display:flex;gap:8px;">
+          <span style="flex-shrink:0;">ℹ️</span>
+          <span>আপনার পোস্টটি প্রকাশের আগে একজন অ্যাডমিন যাচাই করতে পারেন।</span>
+        </div>
+      </form>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-primary btn-block btn-lg" id="post-submit-btn">
+        পোস্ট প্রকাশের জন্য পাঠান
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     OVERLAY: EDIT PROFILE
+     ============================================================ -->
+<div class="overlay" id="edit-profile-overlay">
+  <div class="sheet">
+    <div class="sheet-grip"></div>
+    <div class="sheet-header">
+      <div class="sheet-title">প্রোফাইল সম্পাদনা</div>
+      <button class="sheet-close" data-action="close-sheet">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <div class="form-group" style="text-align:center;">
+        <div class="avatar xl" id="edit-avatar" style="margin:0 auto 10px;cursor:pointer;">👤</div>
+        <input type="file" id="edit-avatar-input" accept="image/*" hidden />
+        <button class="btn btn-outline btn-sm" type="button" id="change-avatar-btn">প্রোফাইল ছবি পরিবর্তন</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">নাম</label>
+        <input type="text" class="form-control" id="edit-name" placeholder="আপনার নাম" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">এলাকা</label>
+        <input type="text" class="form-control" id="edit-area" placeholder="আপনার এলাকা" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">মোবাইল নম্বর <span class="optional">(ঐচ্ছিক)</span></label>
+        <input type="tel" class="form-control" id="edit-phone" placeholder="01XXXXXXXXX" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">সংক্ষিপ্ত পরিচিতি <span class="optional">(ঐচ্ছিক)</span></label>
+        <textarea class="form-control form-textarea" id="edit-bio" placeholder="নিজের সম্পর্কে কিছু লিখুন..." rows="3"></textarea>
+      </div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-primary btn-block btn-lg" id="save-profile-btn">পরিবর্তন সংরক্ষণ করুন</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     OVERLAY: REPORT
+     ============================================================ -->
+<div class="overlay" id="report-overlay">
+  <div class="sheet">
+    <div class="sheet-grip"></div>
+    <div class="sheet-header">
+      <div class="sheet-title">🚩 রিপোর্ট করুন</div>
+      <button class="sheet-close" data-action="close-sheet">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet-body">
+      <div class="form-group">
+        <label class="form-label">রিপোর্টের কারণ</label>
+        <div id="report-reasons" style="display:flex;flex-direction:column;gap:6px;">
+          <label class="check-item"><input type="radio" name="report-reason" value="spam" /><span>স্প্যাম</span></label>
+          <label class="check-item"><input type="radio" name="report-reason" value="fake" /><span>ভুয়া তথ্য</span></label>
+          <label class="check-item"><input type="radio" name="report-reason" value="vulgar" /><span>অশালীন বিষয়</span></label>
+          <label class="check-item"><input type="radio" name="report-reason" value="harassment" /><span>হয়রানি</span></label>
+          <label class="check-item"><input type="radio" name="report-reason" value="fraud" /><span>প্রতারণা</span></label>
+          <label class="check-item"><input type="radio" name="report-reason" value="privacy" /><span>গোপনীয়তার সমস্যা</span></label>
+          <label class="check-item"><input type="radio" name="report-reason" value="other" /><span>অন্যান্য</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">সমস্যাটি বিস্তারিত লিখুন</label>
+        <textarea class="form-control form-textarea" id="report-desc" placeholder="কী সমস্যা হয়েছে সংক্ষেপে লিখুন..." rows="3"></textarea>
+      </div>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-danger btn-block btn-lg" id="report-submit-btn">রিপোর্ট পাঠান</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     OVERLAY: REACTION PICKER
+     ============================================================ -->
+<div class="overlay center" id="reaction-overlay">
+  <div class="reaction-picker">
+    <button class="reaction-option" data-reaction="like">❤️</button>
+    <button class="reaction-option" data-reaction="helpful">👍</button>
+    <button class="reaction-option" data-reaction="sad">😢</button>
+    <button class="reaction-option" data-reaction="angry">😡</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     OVERLAY: POST MENU
+     ============================================================ -->
+<div class="overlay" id="post-menu-overlay">
+  <div class="sheet" style="max-height:60vh;">
+    <div class="sheet-grip"></div>
+    <div class="sheet-body" id="post-menu-body" style="padding:8px 0 16px;"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     LOADING OVERLAY
+     ============================================================ -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text" id="loading-text">লোড হচ্ছে...</div>
+</div>
+
+<!-- ============================================================
+     TOAST CONTAINER
+     ============================================================ -->
+<div id="toast-container"></div>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script src="loading.js"></script>
+<script src="login.js"></script>
+<script src="contact.js"></script>
+<script src="features.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
